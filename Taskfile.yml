@@ -20,3 +20,9 @@ tasks:
   local-build:
     cmds:
     - docker build -t $IMAGE:$TAG .
+
+  trigger:
+    desc: trigger build
+    cmds:
+     - git commit -m "triggering build" -a
+     - task: image-tag
