@@ -23,6 +23,7 @@ tasks:
 
   trigger:
     desc: trigger build
+    ignore_errors: true
     cmds:
      - git commit -m "triggering build" -a
      - task: image-tag
