@@ -26,3 +26,4 @@ tasks:
     cmds:
      - git commit -m "triggering build" -a
      - task: image-tag
+     - git push origin main --tags
