@@ -15,6 +15,8 @@ RUN git clone https://github.com/dimitri/pgloader.git \
  && make 
 
 FROM node:22
+# Ensure default `node` user has access to `sudo`
+ARG USERNAME=node
 
 # Install basic development tools
 RUN \
@@ -40,8 +42,6 @@ RUN \
     echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
     && chmod 0440 /etc/sudoers.d/$USERNAME
 
-# Ensure default `node` user has access to `sudo`
-ARG USERNAME=node
 
 # install ops and plugins
 USER node

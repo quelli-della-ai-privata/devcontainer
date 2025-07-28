@@ -1,14 +1,14 @@
 version: '3'
 
-vars:
+env:
  IMAGE: ghcr.io/quelli-della-ai-privata/devcontainer
  TAG:
     sh: git describe --tags --abbrev=0 2>/dev/null || echo latest
  
 tasks:
 
-  default: task -l
-
+  default: echo $IMAGE:$TAG
+  
   image-tag: 
     desc: generate a new image tag
     silent: true
@@ -19,6 +19,4 @@ tasks:
 
   local-build:
     cmds:
-    - docker build  -t $IMAGE:TAG .
-    - docker tag qdaip:$(TAG) qdaip:latest
-    - docker images qdaip
+    - docker build -t $IMAGE:$TAG .
